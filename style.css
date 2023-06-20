@@ -9,19 +9,30 @@
     outline: none;
     scroll-behavior: smooth;
   }
+
+/*======================================================================================THEME-SECTION================================================================================*/
+  
+
   :root {
-    --bg-color: #1f242d;
-    --second-bg-color: #323946;
+    --bg-color: rgb(34, 37, 39);
+    --second-bg-color: rgb(23, 25, 26,.9);  
     --text-color: #fff;
-    --main-color: #0ef;
-  }
-  .toggle-theme{
+    --main-color: rgb(75, 131, 249); 
+
+  } 
+
+/*======================================================================================DARK-THEME===================================================================================*/
+
+  .lightTheme{
     --bg-color: #fff;
-    --second-bg-color: #e5e5e5;
+    --second-bg-color: rgb(205, 218, 250,.8);
     --text-color: #1f242d;
-    --main-color: #0ef;
+    --main-color: rgb(75, 131, 249);
   }
-  html {
+
+/*======================================================================================HTML/BODY=====================================================================================*/
+  
+html {
     font-size: 62.5%;
     overflow-x: hidden;
     scroll-behavior: smooth;
@@ -31,126 +42,84 @@
     background: var(--bg-color);
     color: var(--text-color);
   }
-  .cursor {
-    z-index: 99999;
+
+/*===============================================================================LOADER SCREAN ===========================================================*/  
+  
+  #preloader {
+    background-color: var(--bg-color) ;
+    z-index: 2;
     position: fixed;
-  }
-
-  .cursor .click-animation {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#loader {
+    display: block;
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .cursor .click-animation .shape {
+    left: 50%;
+    top: 50%;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: var(--main-color);
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+#loader:before {
+    content: "";
     position: absolute;
-    opacity: 0;
-  }
-
-  /*======= Circles =======*/
-  .cursor .click-animation .shape.circle.big {
-    width: 40px;
-    height: 40px;
-    border: 2px solid #4fb4f8;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
     border-radius: 50%;
-  }
-
-  .cursor .click-animation .shape.circle.small {
-    width: 20px;
-    height: 20px;
-    border: 1px solid #2ca8fa;
+    border: 3px solid transparent;
+    border-top-color: var(--main-color);
+    -webkit-animation: spin 3s linear infinite;
+    animation: spin 3s linear infinite;
+}
+#loader:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
     border-radius: 50%;
-  }
+    border: 3px solid transparent;
+    border-top-color: var(--main-color);
+    -webkit-animation: spin 1.5s linear infinite;
+    animation: spin 1.5s linear infinite;
+}
+@-webkit-keyframes spin {
+    0%   {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes spin {
+    0%   {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
 
-  .cursor.active .click-animation .shape.circle {
-    animation: click-animation-circle 3s ease-out infinite;
-  }
-
-  @keyframes click-animation-circle {
-    0% {
-      opacity: 0;
-    }
-    5% {
-      opacity: 1;
-    }
-    30% {
-      opacity: 0;
-      transform: scale(3);
-    }
-  }
-
-  /*======= Triangles =======*/
-  .cursor .click-animation .shape.triangle.yellow {
-    border-style: solid;
-    border-width: 0 5px 10px 5px;
-    border-color: transparent transparent #f9de2d transparent;
-  }
-
-  .cursor.active .click-animation .shape.triangle.yellow {
-    animation: click-animation-triangle-yellow 3s ease-out infinite;
-  }
-
-  @keyframes click-animation-triangle-yellow {
-    0% {
-      opacity: 0;
-    }
-    5% {
-      opacity: 1;
-    }
-    40% {
-      opacity: 0;
-      transform: scale(2.5) translate(50px, -50px) rotate(360deg);
-    }
-  }
-
-  .cursor .click-animation .shape.triangle.green {
-    border-style: solid;
-    border-width: 0 3.5px 7px 3.5px;
-    border-color: transparent transparent #47eda0 transparent;
-  }
-
-  .cursor.active .click-animation .shape.triangle.green {
-    animation: click-animation-triangle-green 3s ease-out infinite;
-  }
-
-  @keyframes click-animation-triangle-green {
-    0% {
-      opacity: 0;
-    }
-    5% {
-      opacity: 1;
-    }
-    40% {
-      opacity: 0;
-      transform: scale(2.5) translate(20px, 50px) rotate(360deg);
-    }
-  }
-
-  /*======= Disc =======*/
-  .cursor .click-animation .shape.disc {
-    width: 8.5px;
-    height: 8.5px;
-    background: #d563f8;
-    border-radius: 50%;
-  }
-
-  .cursor.active .click-animation .shape.disc {
-    animation: click-animation-disc 3s ease-out infinite;
-  }
-
-  @keyframes click-animation-disc {
-    0% {
-      opacity: 0;
-    }
-    5% {
-      opacity: 1;
-    }
-    40% {
-      opacity: 0;
-      transform: scale(2) translate(-70px, -30px);
-    }
-  }
+/*===============================================================================HEADER===========================================================================*/
 
   header {
     position: fixed;
@@ -162,8 +131,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 100;
-    backdrop-filter: blur(8px);
+    z-index: 1;
+    backdrop-filter: blur(20px);
   }
   .header.sticky{
     border-bottom: rgba(0, 0, 0, 0.2);
@@ -175,6 +144,9 @@
     font-weight: 600;
     cursor: default;
     pointer-events: none;
+    color: var(--main-color);
+
+
   }
   #menu-icon {
     font-size: 3rem;
@@ -199,13 +171,16 @@
     padding: 10rem 9% 2rem;
   }
   #theme {
-    font-size: 3rem;
+    font-size: 2rem;
     cursor: pointer;
     transition: 0.5s ease;
   }
   #theme:hover {
     transform: rotate(15deg);
   }
+
+/*===============================================================================HOME-SCREEN=====================================================================*/  
+
   .home {
     position: relative;
     width: 100%;
@@ -269,15 +244,16 @@
     border-radius: 50%;
     font-size: 3rem;
     color: var(--main-color);
+    background: var(--second-bg-color);
     margin: 3rem 1.5rem 3rem 0rem;
     transition: 0.3s ease;
     padding: 0rem 0.7rem;
   }
   .social-media a:hover {
     background: var(--main-color);
-    color: var(--text-color) fff;
-    box-shadow: 0 0 2rem var(--main-color);
-    transform: scale(1.2);
+    color: var(--text-color) ;
+    box-shadow: 0 0 1rem var(--main-color);
+    transform: scale(1.1);
   }
   .social-media a:active {
     background: var(--text-color);
@@ -313,6 +289,10 @@
     background-color: var(--second-bg-color);
     animation: my-photo 2s ease 0s 1 normal none;
   }
+
+/*===============================================================================ABOUT SECTION====================================================================*/
+
+
   #about {
     display: flex;
     justify-content: center;
@@ -338,6 +318,9 @@
     font-size: 1.6rem;
     margin: 2rem 0 3rem;
   }
+
+/*===============================================================================SERVICE SECTION====================================================================*/
+
   .services h2 {
     margin-bottom: 5rem;
   }
@@ -348,11 +331,9 @@
     align-items: center;
     flex-wrap: wrap;
     position: relative;
+    
   }
-  .services .box-container .box:hover {
-    border-color: var(--main-color);
-    transform: scale(1.02);
-  }
+
   .services .box-container .box {
     flex: 1 1 30rem;
     padding: 3rem 2rem 4rem;
@@ -362,7 +343,21 @@
     overflow: hidden;
     border: 0.2rem solid var(--bg-color);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
-    transition: 0.5s ease;
+    transition: 1s ease;
+    background: linear-gradient(135deg,var(--second-bg-color), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  
+    
+  }
+  .services .box-container .box:hover, .services .box-container #box3:hover {
+    border-color: var(--main-color);
+    transform: scale(2,2);
+    box-shadow: 0 0 .9rem 0 var(--main-color);
+    
   }
   .box i {
     font-size: 7rem;
@@ -375,73 +370,252 @@
     font-size: 1.6rem;
     margin: 1rem 0 3rem;
   }
-  .portfolio {
-    background: var(--second-bg-color);
-  }
-  .portfolio h2 {
-    margin-bottom: 5rem;
-  }
-  .portfolio .portfolio-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: center;
-    gap: 2.5rem;
-  }
-  .portfolio-container .portfolio-box {
-    position: relative;
-    border-radius: 2rem;
-    box-shadow: 0 0 1rem var(--bg-color);
-    overflow: hidden;
-    display: flex;
-  }
 
-  .portfolio-box img {
-    width: 100%;
-    transition: 0.5s ease;
-  }
-  .portfolio-box:hover img {
-    transform: scale(1.1);
-  }
-  .portfolio-box .portfolio-layer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.1), var(--main-color));
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    padding: 0 4rem;
-    transform: translateY(100%);
-    transition: 0.5s ease;
-  }
-  .portfolio-box:hover .portfolio-layer {
-    transform: translateY(0);
-  }
-  .portfolio-layer h4 {
-    font-size: 3rem;
-  }
-  .portfolio-layer p {
-    font-size: 2rem;
-    margin: 0.3rem 0 1rem;
-  }
-  .portfolio-layer a {
-    background: var(--text-color);
-    display: inline-flex;
-    justify-items: center;
-    align-items: center;
-    width: 5rem;
-    height: 5rem;
-    border-radius: 50%;
-  }
-  .portfolio-layer a i {
-    font-size: 2rem;
-    color: var(--second-bg-color);
-    margin: 0rem 0rem 0rem 1.5rem;
-  }
+
+
+/*====================================================================================SKILL SECTION===============================================================*/
+
+.skills {
+  background:var(--second-bg-color);
+}
+.skills h2 {
+  color: var(--text-color);
+  margin-bottom: 5rem;
+}
+.skills .heading span {
+  color:var(--main-color);
+}
+.skills .container {
+  background: var(--bg-color);
+  color: var(--text-color);
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 90%;
+  margin: auto;
+  margin-top: 2rem;
+}
+.skills .container .row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  flex-wrap: wrap;
+  gap: 1.8rem;
+}
+.skills .container .bar {
+  margin-bottom: 15px;
+  padding: 10px;
+  /* background: var(--second-bg-color); */
+  background: linear-gradient(135deg, var(--second-bg-color), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border:1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: 1s ease;
+}
+.skills .container .bar:hover {
+  box-shadow: 0 0 .9rem var(--main-color) !important;
+
+  border-color: var(--main-color);
+}
+
+.skills .container .bar .info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.skills .container .bar .info i {
+  font-size: 4rem;
+}
+.skills .container .bar .info span {
+  color: var(--text-color);
+  font-size: 2rem;
+  font-weight: 500;
+  font-family: "Poppins";
+  margin-left: 0.5rem;
+}
+/* skills media queries starts*/
+@media(max-width: 780px) {
+  .skills .container .row {
+  grid-template-columns: repeat(4, 1fr);
+}
+}
+@media screen and (max-width: 600px) {
+.skills .container {
+  padding: 0;
+  margin: 0;
+}
+.skills .container .row {
+  grid-template-columns: repeat(2, 1fr);
+  margin: 1rem;
+  padding: 2rem 0.2rem 2rem 0.2rem;
+  gap: 1rem;
+}
+.skills .container {
+  margin-top: 5px;
+  width: 100%;
+}
+}
+
+
+/*===============================================================================EDUCATION SECTION====================================================================*/
+
+.education {
+  background:var(--bg-color);
+}
+.education h1{
+    margin-bottom: 5rem;
+}
+
+.education .box-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.education .box-container .box {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  border-radius: 0.5rem;
+  text-align: center;
+  position: relative;
+  margin-top: 2rem;
+  overflow: hidden;
+  transition: 1s ease;
+  background: var(--second-bg-color);
+  background: linear-gradient(135deg, var(--second-bg-color), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border:1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+.education .box-container .box:hover {
+ 
+  box-shadow: 0 0 .9rem var(--main-color) !important;
+  border-color: var(--main-color)
+}
+.education .box-container .box .image {
+  flex: 1 1 20rem;
+  width: 100%;
+}
+.education .box-container .box img {
+  object-fit: cover;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.education .box-container .box .content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  flex-wrap: wrap;
+  flex: 1 1 70rem;
+}
+.education .box-container .box .content h3 {
+  font-size: 2.5rem;
+  color: var(--text-color);
+  padding: 0.5rem 0;
+  font-weight: 600;
+  text-align: left;
+  margin-left: 1rem;
+}
+.education .box-container .box .content p {
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  text-align: left;
+  color: var(--text-color);
+}
+.education h4 {
+  font-size: 2rem;
+  color: rgb(36, 104, 4);
+  text-align: left;
+  margin: 1rem;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+}
+
+/*===============================================================================PORTFOLIO SECTION================================================================*/
+
+.portfolio {
+  background: var(--second-bg-color);
+}
+.portfolio h2 {
+  margin-bottom: 5rem;
+}
+.portfolio .portfolio-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  gap: 2.5rem;
+}
+.portfolio-container .portfolio-box {
+  position: relative;
+  border-radius: 2rem;
+  box-shadow: 0 0 1rem var(--bg-color);
+  overflow: hidden;
+  display: flex;
+  
+}
+
+.portfolio-box img {
+  width: 100%;
+  transition: 0.5s ease;
+}
+.portfolio-box:hover img {
+  transform: scale(1.1);
+  /* filter: brightness(59%); */
+  filter: blur(5px);
+}
+.portfolio-box .portfolio-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), var(--main-color));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 0 4rem;
+  transform: translateY(100%);
+  transition: 0.5s ease;
+}
+.portfolio-box:hover .portfolio-layer {
+  transform: translateY(0);
+  
+}
+.portfolio-layer h4 {
+  font-size: 3rem;
+}
+.portfolio-layer p {
+  font-size: 2rem;
+  margin: 0.3rem 0 1rem;
+}
+.portfolio-layer a {
+  background: var(--text-color);
+  display: inline-flex;
+  justify-items: center;
+  align-items: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+}
+.portfolio-layer a i {
+  font-size: 2rem;
+  color: var(--second-bg-color);
+  margin: 0rem 0rem 0rem 1.5rem;
+}
+
+/*===============================================================================CONTACT SECTION====================================================================*/
+
+  
   .contact h2 {
     margin-bottom: 3rem;
   }
@@ -450,6 +624,7 @@
     margin: 1rem auto;
     text-align: center;
     margin-bottom: 3rem;
+    
   }
   .contact form .input-box {
     display: flex;
@@ -476,6 +651,10 @@
     margin-top: 2rem;
     cursor: pointer;
   }
+
+/*=============================================================================================FOOTER==============================================================================*/
+  
+
   .footer {
     background: var(--second-bg-color);
     display: flex;
@@ -495,9 +674,13 @@
     background: var(--main-color);
     border-radius: 0.8rem;
     transition: 0.5s ease;
+    
   }
   .footer-iconTop a:hover {
     box-shadow: 0 0 1rem var(--main-color);
+    background: var(--main-color);
+    color: var(--text-color) ;
+    transform: scale(1.1);
   }
   .footer-iconTop a i {
     font-size: 2.4rem;
@@ -529,7 +712,7 @@
       padding: 2rem 3%;
     }
   }
-  @media(max-width: 768px){
+  @media(max-width: 795px){
     #menu-icon{
       display: block;
     }
@@ -542,6 +725,7 @@
       background: var(--bg-color);
       border-top: .1rem solid rgba(0, 0, 0, 0.2);
       box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2);
+      
       display: none;
     }
     .nav.active{
@@ -551,6 +735,7 @@
       display: block;
       font-size: 2rem;
       margin: 3rem 0;
+      
     }
     .home{
       flex-direction: column;
@@ -592,8 +777,8 @@
       font-size: 50%;
     }
     .home-img img{
-      width: 50vw;
-      margin-bottom: 5vh;
+      width: 32vw;
+      margin: auto;
     }
     .about-img img{
       width: 30vh;
@@ -605,8 +790,8 @@
   }
   @media(max-width: 365px){
     .home-img img{
-      width: 60vw;
-      margin-bottom: 5vh;
+      width: 31vw;
+      /* margin: auto; */
     }
     .about-img img{
       width: 30vh;

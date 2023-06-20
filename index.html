@@ -2,61 +2,68 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <!--TITLE-->
-    <title>Portfolio</title>
-    <!--ICON LINK-->
+
+    <!-------------------------------------------------------------------------------TITLE------------------------------------------------------------------------------->
+
+    <title>PORTFOLIO</title>
+    <link rel="icon" type="image/x-icon" href="/Asset/icon/favicon.png">
+    <!-----------------------------------------------------------------------------ICON LINK----------------------------------------------------------------------------->
+
     <script src="https://kit.fontawesome.com/82021c330a.js" crossorigin="anonymous"></script>
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <!--CSS FILE-->
-    <Link rel="stylesheet" href="style.css">
+
+    <!-------------------------------------------------------------------------------CSS FILE---------------------------------------------------------------------------->
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-    <!--CURSOR ANIMATION-->
-    <div class="cursor">
-        <div class="click-animation">
-            <div class="shape circle big"></div>
-            <div class="shape circle small"></div>
-            <div class="shape triangle yellow"></div>
-            <div class="shape triangle green"></div>
-            <div class="shape disc"></div>
-        </div>
-    </div>
-    <!--PRELOADER PAGE-->
-    <div class="preloader">
 
+    <!---------------------------------------------------------------------------PRELOADER PAGE--------------------------------------------------------------------------->
+    <div id="preloader">
+        <div id="loader"></div>
     </div>
-    <!--HEADER-->
+
+    <!-------------------------------------------------------------------------------HEADER------------------------------------------------------------------------------->
+
     <header class="header">
-        <a href="#" class="logo"><span>b/s</span>DESIGN</a>
+        <a href="#" class="logo"><span>PORTFOLIO</span></a>
         <i class="bx bx-menu" id="menu-icon">
         </i>
         <nav class="nav">
             <a href="#home" class="active "> Home </a>
             <a href="#about">About</a>
-            <a href="#services">Skill</a>
-            <a href="#portfolio">Portfolio</a>
+            <a href="#services">Services</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#portfolio">Projects</a>
             <a href="#contact">Contact</a>
+            <a><i class='bx bx-sun' id="theme"></i></a>
+
         </nav>
-        <i class="bx bx-sun" id="theme"></i>
     </header>
-    <!--HOME PAGE-->
+
+    <!-------------------------------------------------------------------------------HOME PAGE-------------------------------------------------------------------------------->
+
     <section class="home" id="home">
         <div class="home-content">
             <h3>Hello, It's Me</h3>
             <h1>Badal Sharma</h1>
-            <h3>and I'm a <span class="multiple-text">Frontend Developer</span></h3>
+            <h3>and I'm a <span class="multiple-text"></span></h3>
             <p> I have been working in this field for over four years and I enjoy creating web applications and websites
                 that are user-friendly, responsive, and functional. I have experience with both front end and back end
                 technologies.</p>
             <div class="social-media">
-                <a href="#"><i class='bx bxl-facebook'></i></a>
-                <a href="https://www.instagram.com/badalsharmaa/"><i class='bx bxl-instagram'></i></a>
-                <a href="https://www.linkedin.com/in/badalsharmaa/"><i class='bx bxl-linkedin'></i></a>
-                <a href="#"><i class="bx bxl-twitter"></i></a>
+                <a href="https://github.com/badalsharmaa" target="_blank"><i class='bx bxl-github'></i></a>
+                <a href="https://www.linkedin.com/in/badalsharmaa/" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://leetcode.com/badalsharmaa/" target="_blank"><i class='bx bx-code-alt'></i></a>
+                <a href="mailto:badalsharma2941@gmail.com" target="_blank"><i class='bx bx-envelope'></i></a>
+
             </div>
             <a href="./Asset/CV.pdf" class="csv-btn">Download CV</a>
         </div>
@@ -64,7 +71,9 @@
             <img src="/Asset/my-pic.png" alt="">
         </div>
     </section>
-    <!--ABOUT PAGE-->
+
+    <!-------------------------------------------------------------------------------ABOUT PAGE------------------------------------------------------------------------------------>
+
     <section class="about" id="about">
         <div class="about-img">
             <img src="/Asset/my-pic.png" alt="">
@@ -80,73 +89,302 @@
                 As a full stack developer, I am responsible for designing and developing web services and interfaces,
                 contributing to front end and back end development processes, building new product features or APIs,
                 performing tests, troubleshooting software, and fixing bugs.</p>
-            <a href="#" class="csv-btn">Know More</a>
+            <a href="https://www.linkedin.com/in/badalsharmaa/" class="csv-btn">Know More</a>
         </div>
     </section>
-    <!--SKILL PAGE-->
+
+    <!---------------------------------------------------------------------------- SKILL SECTION---------------------------------------------------------------------------------->
+
     <section class="services" id="services">
-        <h2 class="heading">My <span> Skills</span></h2>
+        <h2 class="heading">My <span> Services</span></h2>
         <div class="box-container">
-            <div class="box">
+            <div class="box" id="box1">
                 <i class="bx bx-code-alt"></i>
                 <h3>Web Development</h3>
                 <p>I am a skilled developer with a strong background in various projects. I have successfully completed
-                    many assignments using different technologies and frameworks. I enjoy creating innovative solutions
+                    many assignments using different technologies,libraries0 and frameworks. I enjoy creating innovative
+                    solutions
                     that meet the needs of the clients and users.</p>
-                <a href="#" class="csv-btn">Read More</a>
+
             </div>
-            <div class="box">
+            <div class="box" id="box2">
                 <i class="bx bx-edit-alt"></i>
-                <h3>Graphic Design</h3>
-                <p>As a certified web graphic designer, I have the skills and knowledge to create engaging and
-                    attractive websites. I am proficient in using various tools such as Adobe Photoshop and Illustrator
-                    to design and edit graphics, logos, icons, and other elements. </p>
-                <a href="#" class="csv-btn">Read More</a>
+                <h3>UI / UX Design</h3>
+                <p> I have the skills and knowledge to create engaging and
+                    attractive UI/UX Design of applications. I am proficient in using various tools such as Figma,
+                    Spline , Adobe Xd, Adobe Photoshop and Illustrator
+                    to design and edit graphics, logos, icons,Interface, Wireframe and other elements. </p>
+
             </div>
-            <div class="box">
+            <div class="box" id="box3">
                 <i class="bx bx-objects-vertical-top"></i>
                 <h3>Coding background</h3>
                 <p>One of my strengths is problem-solving, which I have honed by tackling more than 100+ challenging
                     questions on LeetCode. I have a solid grasp of object-oriented programming, data structures and
                     algorithms concepts, such as linked list, array, stack etc.
                 </p>
-                <a href="#" class="csv-btn">Read More</a>
+
             </div>
         </div>
     </section>
-    <!--PORTFOLIO PAGE-->
+
+    <!---------------------------------------------------------------------- SKILL - SECTION --------------------------------------------------------------------------------------------->
+
+    <section class="skills" id="skills">
+
+        <h2 class="heading"> Skills & <span>Abilities</span></h2>
+
+        <div class="container">
+            <div class="row" id="skillsContainer">
+
+                <div class="bar">
+                    <div class="info">
+                        <img src="https://img.icons8.com/fluency/48/html-5.png" alt="">
+                        <span>HTML</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="https://img.icons8.com/color/48/000000/css3.png" alt="">
+                        <span>CSS</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="https://img.icons8.com/color/48/000000/javascript.png" alt="">
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="https://img.icons8.com/color/48/000000/sql.png" alt="">
+                        <span>SQL</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="https://img.icons8.com/fluency/48/php.png" alt="">
+                        <span>PHP</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="https://img.icons8.com/color/48/000000/bootstrap.png" alt="">
+                        <span>Bootstrap</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="Asset/icon/figma.png" alt="">
+                        <span>Figma</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="https://img.icons8.com/color/48/000000/java-coffee-cup-logo.png" alt="">
+                        <span>Java</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="Asset/icon/c.png" alt="">
+                        <span>C</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="Asset/icon/linux.png" alt="">
+                        <span>Linux</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="Asset/icon/dbms.png" alt="">
+                        <span>DBMS</span>
+                    </div>
+                </div>
+
+                <div class="bar">
+                    <div class="info">
+                        <img src="Asset/icon/xd.png" alt="">
+                        <span>Adobe XD</span>
+                    </div>
+                </div>
+                <!--
+               <div class="bar">
+                    <div class="info">
+                        <img src="https://img.icons8.com/color/48/react-native.png" alt="">
+                        <span>ReactJs</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="https://img.icons8.com/fluency/48/angularjs.png" alt="">
+                        <span>Angular</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="https://img.icons8.com/nolan/64/express-js.png" alt="">
+                        <span>ExpressJs</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="https://img.icons8.com/color/48/000000/mongodb.png" alt="">
+                        <span>Mongo DB</span>
+                    </div>
+                </div> 
+                
+                https://icons8.com/icons/set/operating-sysytem
+            -->
+                <div class="bar">
+                    <div class="info">
+                        <img src="Asset/icon/JQ.png" alt="">
+                        <span>JQuery</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="https://img.icons8.com/nolan/64/git.png" alt="">
+                        <span>Git VCS</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="Asset/icon/git.png        " alt="">
+                        <span>Github</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="https://img.icons8.com/fluency/48/intellij-idea.png" alt="">
+                        <span>IntelliJ</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="https://img.icons8.com/fluency/48/visual-studio.png" alt="">
+                        <span>VS Code</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="https://img.icons8.com/fluency/48/adobe-photoshop.png" alt="">
+                        <span>Photoshop</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="https://img.icons8.com/fluency/48/android-os.png" alt="">
+                        <span>Android Studio</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="https://img.icons8.com/fluency/48/azure-1.png" alt="">
+                        <span>Azure</span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <img src="https://img.icons8.com/fluency/48/python.png" alt="">
+                        <span>Python</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!---------------------------------------------------------------------- EDUCATION SECTION -------------------------------------------------------------------------->
+
+    <section class="education" id="education">
+
+        <h1 class="heading"> My <span>Education</span></h1>
+        <div class="box-container">
+            <div class="box">
+                <div class="image">
+                    <img src="Asset/clg.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>Bachelor of Engineering in Computer Science</h3>
+                    <p> GLA UNIVERSITY | GLAU</p>
+                    <h4>2019-2023 | Completed</h4>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="Asset/school.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3> XII In Science Stream</h3>
+                    <p>Delhi Public School | CBSE</p>
+                    <h4>2018-2019 | Completed</h4>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="Asset/school.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3> X </h3>
+                    <p>Delhi Public School | CBSE</p>
+                    <h4>2017-2018 | Completed</h4>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!---------------------------------------------------------------------- PORTFOLIO SECTION ---------------------------------------------------------------------->
+
     <section class="portfolio" id="portfolio">
         <h2 class="heading">Latest <span>Projects</span></h2>
         <div class="portfolio-container">
-            <div class="portfolio-box">
-                <img src="Asset/lifestyle store.png" alt="">
+            <div class="portfolio-box" id="pbleft">
+                <img src="Asset/lifestyle store.jpeg" alt="">
                 <div class="portfolio-layer">
                     <h4>Lifestyle Store</h4>
                     <p>A E-commerce websites like amazon and flipkart.
                     </p>
-                    <a href="https://github.com/badalsharmaa/Lifestyle-Store-"><i class='bx bx-link-external'></i></a>
+                    <a href="http://lifestylestore.42web.io/" target="_blank"><i class='bx bx-link-external'></i></a>
                 </div>
             </div>
-            <div class="portfolio-box">
+            <div class="portfolio-box" id="pbtop">
                 <img src="Asset/sb bank.png" alt="">
                 <div class="portfolio-layer">
                     <h4>S&B Bank</h4>
                     <p>A Online banking system website for managing money.
                     </p>
-                    <a href="https://badalsharma2941.000webhostapp.com/index.php"><i
+                    <a href="https://badalsharma2941.000webhostapp.com/index.php" target="_blank"><i
                             class='bx bx-link-external'></i></a>
                 </div>
             </div>
-            <div class="portfolio-box">
+
+            <div class="portfolio-box" id="pbright">
+                <img src="Asset/tour Assistant.jpeg" alt="">
+                <div class="portfolio-layer">
+                    <h4>Tour Assistant</h4>
+                    <p>A website for travelling.
+                    </p>
+                    <a href="#"><i class='bx bx-link-external' target="_blank"></i></a>
+                </div>
+            </div>
+
+            <div class="portfolio-box" id="pbleft">
                 <img src="Asset/payment-gateway.jpeg" alt="">
                 <div class="portfolio-layer">
                     <h4>Badal Foundation</h4>
                     <p>A donation website with integerated payment gateway for easy donation.
                     </p>
-                    <a href="https://paymentgatewayyyyy.000webhostapp.com/"><i class='bx bx-link-external'></i></a>
+                    <a href="https://paymentgatewayyyyy.000webhostapp.com/" target="_blank"><i
+                            class='bx bx-link-external'></i></a>
                 </div>
             </div>
-            <div class="portfolio-box">
+            <div class="portfolio-box" id="pbbuttom">
                 <img src="Asset/resume-builder.jpeg" alt="">
                 <div class="portfolio-layer">
                     <h4>Resume Builder</h4>
@@ -155,43 +393,32 @@
                             class='bx bx-link-external'></i></a>
                 </div>
             </div>
-            <div class="portfolio-box">
-                <img src="Asset/c.m.p.png" alt="">
-                <div class="portfolio-layer">
-                    <h4>Object Detection</h4>
-                    <p>A implementation which detect object in real-time</p>
-                    <a href="https://github.com/badalsharmaa/C.M.P-object-detection"><i
-                            class='bx bx-link-external'></i></a>
-                </div>
-            </div>
-            <div class="portfolio-box">
-                <img src="Asset/tour Assistant.jpeg" alt="">
-                <div class="portfolio-layer">
-                    <h4>Tour Assistant</h4>
-                    <p>A website for travelling.
-                    </p>
-                    <a href="#"><i class='bx bx-link-external'></i></a>
-                </div>
-            </div>
+
+
         </div>
     </section>
-    <!--CONTACT US PAGE-->
+
+    <!------------------------------------------------------------------- CONTACT US ----------------------------------------------------------------------------------->
+
     <section class="contact" id="contact">
         <h2 class="heading"> Contact<span>Me!</span></h2>
-        <form action="#">
-            <div class="input-box">
-                <input type="text" placeholder="Name">
-                <input type="email" placeholder="Email Address">
+        <form id="form" method="POST">
+            <div class=" input-box" id="input-boxleft">
+                <input type="text" name="Name" placeholder="Name">
+                <input id="formMail" type="email" name="Email" placeholder="Email Address">
+
             </div>
-            <div class="input-box">
-                <input type="number" placeholder="Mobile number">
-                <input type="text" placeholder="Email Subject">
+            <div class="input-box" id="input-boxright">
+                <input type="number" name="Mobile Number" placeholder="Mobile Number">
+                <input id="formSub" type="text" name="Email Subject" placeholder="Email Subject">
             </div>
-            <textarea name="" id="" cols="10" rows="10" placeholder="Your Message"></textarea>
-            <input type="submit" value="Send Message" class="csv-btn">
+            <textarea id="formBody" cols="10" rows="10" name="Message" placeholder="Your Message"></textarea>
+            <input type="submit" value="Send Message" class="csv-btn" id="submitbtn">
         </form>
     </section>
-    <!--FOOTER-->
+
+    <!--------------------------------------------------------------------------FOOTER-------------------------------------------------------------------------------->
+
     <footer class="footer">
         <div class="footer-text">
             <p>Copyright &copy; 2023 by Badal | All Rigths Reserved.</p>
@@ -200,11 +427,13 @@
             <a href="#"><i class="bx bx-chevrons-up"></i></a>
         </div>
     </footer>
-    <!--JAVASCRIPT FILE-->
+
+    <!----------------------------------------------------------------------JAVASCRIPT FILE---------------------------------------------------------------------->
+
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="/script.js"></script>
-
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 </body>
 
 </html>
