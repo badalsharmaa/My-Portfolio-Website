@@ -1,7 +1,7 @@
 /*===========================================Preloader=========================================*/
 
 var loader = document.getElementById("preloader");
-var delayInMilliseconds = 900; //1 second
+var delayInMilliseconds = 5; //1 second
 
 
 window.addEventListener("load",function(){
