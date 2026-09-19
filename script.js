@@ -1,131 +1,504 @@
-/*===========================================Preloader=========================================*/
+/**
+ * BADAL SHARMA — DESIGN ENGINEER & FULL STACK DEVELOPER PORTFOLIO
+ * Core Interaction, Three.js WebGL Engine, Lenis Smooth Scroll & GSAP Choreography
+ */
 
-var loader = document.getElementById("preloader");
-var delayInMilliseconds = 5; //1 second
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Inject Official Brand SVGs (GitHub & LinkedIn) to avoid deprecation warnings
+  const githubSvg = `<svg class="icon-brand" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>`;
+  const linkedinSvg = `<svg class="icon-brand" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>`;
 
-
-window.addEventListener("load",function(){
-  setTimeout(function() {
-    loader.style.display = "none";
-  }, delayInMilliseconds);
-  
-})
-
-/*============================================toggle icon navbar===============================*/
-const themeButton = document.getElementById('theme')
-const lightTheme = 'lightTheme'
-const iconTheme = 'bx bx-moon'
-// Previously selected topic (if user selected)
-const selectedTheme = localStorage.getItem('selected-theme')
-const selectedIcon = localStorage.getItem('selected-icon')
-
-// We obtain the current theme that the interface has by validating the dark-theme class
-const getCurrentTheme = () => document.body.classList.contains(lightTheme) ? 'dark' : 'light'
-const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx bx-sun' : 'bx bx-moon'
-
-// We validate if the user previously chose a topic
-if (selectedTheme) {
-  // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
-  document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](lightTheme)
-  themeButton.classList[selectedIcon === 'bx bx-moon' ? 'add' : 'remove'](iconTheme)
-}
-
-// Activate / deactivate the theme manually with the button
-themeButton.addEventListener('click', () => {
-    // Add or remove the dark / icon theme
-    document.body.classList.toggle(lightTheme)
-    themeButton.classList.toggle(iconTheme)
-    // We save the theme and the current icon that the user chose
-    localStorage.setItem('selected-theme', getCurrentTheme())
-    localStorage.setItem('selected-icon', getCurrentIcon())
-})
-
-/*============================================toggle icon navbar===============================*/
-
-let menuIcon = document.querySelector('#menu-icon');
-let navbar = document.querySelector('.nav');
-
-menuIcon.onclick = () => {
-  menuIcon.classList.toggle('bx-x');
-  navbar.classList.toggle('active');
-};
-
-/*=============================================nav active link================================*/
-
-let sections = document.querySelectorAll('section');
-let navlinks = document.querySelectorAll('header nav a');
-
-window.onscroll = () => {
-  sections.forEach(sec => {
-    let top = window.scrollY;
-    let offset = sec.offsetTop - 150;
-    let height = sec.offsetHeight;
-    let id = sec.getAttribute('id');
-
-    if(top >= offset && top < offset + height) {
-      navlinks.forEach(links => {
-        links.classList.remove('active');
-        document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
-      });   
-    };
+  document.querySelectorAll('[data-lucide="github"]').forEach((el) => {
+    el.outerHTML = githubSvg;
   });
-};
+  document.querySelectorAll('[data-lucide="linkedin"]').forEach((el) => {
+    el.outerHTML = linkedinSvg;
+  });
 
-/*=================================sticky nav bar==========================================================*/
+  // Initialize Lucide Vector Icons for other icons
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
 
-let header = document.querySelector('header');
-
-header.classList.toggle('sticky',window.scrollY > 100);
-
-/*=========================remove toggle icon and navbar when click navbar link=============================*/
-
-menuIcon.classList.remove('bx-x');
-menuIcon.classList.remove('active');
-
-/*==================================scroll effect============================================================*/
-
-ScrollReveal({ 
-  reset: true, 
-  distance:'69px',
-  duration: 1500,
-  delay: 150
-});
-
-ScrollReveal().reveal('.home-content,.heading,.skills,.portfolio-container #pbtop, .container', { origin: 'top' });
-ScrollReveal().reveal('.home-img,.box-container #box2,.portfolio-container #pbbuttom,.contact form,.skills .container .bar,.contact form #formBody', { origin: 'bottom' });
-ScrollReveal().reveal('.home h1,.box-container #box1,.portfolio-container #pbleft,.about-img, .about-content h3,.education h4,.education .box-container .box .content h3,.education .box-container .boxleft,.contact form #input-boxleft  ', { origin: 'left' });
-ScrollReveal().reveal('.home p,.box-container #box3,.portfolio-container #pbright,.about-content p,.education .box-container .box .content p,.education .box-container .boxright,.contact form #input-boxright', { origin: 'right' });
-
-/*===============================================typed js=================================================*/
-
-const typed = new Typed('.multiple-text', {
-  strings:['Frontend Developer','Software Engineer','UI UX Developer','Graphic designer'],
-  typeSpeed:100,
-  backSpeed:100,
-  backDelay:1000,
-  loop:true
-}); 
-
-/*===============================================form =================================================*/
-
-const form = document.querySelector("#form")
-const submitButton = document.querySelector("#submitbtn")
-const scriptURL = 'https://script.google.com/macros/s/AKfycbyryPCvtt1WpGIsC8E7ZboLfyHo317H-4eBS3lHFbZNaALgm9XFrrIU2uNEW2kTYd8Jiw/exec'
-
-form.addEventListener('submit', e => {
-  submitButton.disabled = true
-  e.preventDefault()
-  let requestBody = new FormData(form)
-  fetch(scriptURL, { method: 'POST', body: requestBody})
-    .then(response => {
-       alert('Success!', response)
-       submitButton.disabled = false
-      })
-    .catch(error => {
-    alert('Error!', error.message)
-      submitButton.disabled = false
-
+  // 2. Initialize Lenis Smooth Scroll
+  let lenis = null;
+  const initLenis = () => {
+    // Respect user's motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
     }
-    )
-})
 
+    if (typeof Lenis !== 'undefined') {
+      lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 1.0,
+        touchMultiplier: 1.8,
+      });
+
+      window.lenis = lenis;
+
+      // Handle anchor link clicks with Lenis smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          const href = this.getAttribute('href');
+          if (href === '#' || !href) return;
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            lenis.scrollTo(target, { offset: -20, duration: 1.2 });
+          }
+        });
+      });
+
+      // Synchronize Lenis with GSAP ScrollTrigger if available
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => {
+          lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+      } else {
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+      }
+    }
+  };
+  initLenis();
+
+  // 3. GSAP & ScrollTrigger Choreography
+  const initGSAP = () => {
+    if (typeof gsap === 'undefined') return;
+
+    if (typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+
+    // Hero Stagger Animation on Initial Load
+    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.9 } });
+
+    heroTl
+      .from('.status-pill', {
+        opacity: 0,
+        y: 20,
+        duration: 0.7,
+        delay: 0.1,
+      })
+      .from(
+        '.hero-title',
+        {
+          opacity: 0,
+          y: 35,
+          duration: 0.85,
+        },
+        '-=0.45'
+      )
+      .from(
+        '.hero-description',
+        {
+          opacity: 0,
+          y: 25,
+          duration: 0.7,
+        },
+        '-=0.5'
+      )
+      .from(
+        '.hero-cta-group > *',
+        {
+          opacity: 0,
+          y: 20,
+          stagger: 0.08,
+          duration: 0.6,
+        },
+        '-=0.4'
+      )
+      .from(
+        '.hero-socials > *',
+        {
+          opacity: 0,
+          y: 15,
+          stagger: 0.06,
+          duration: 0.5,
+        },
+        '-=0.3'
+      )
+      .from(
+        '.hero-visual',
+        {
+          opacity: 0,
+          scale: 0.94,
+          duration: 0.9,
+          ease: 'back.out(1.4)',
+        },
+        '-=0.7'
+      );
+
+    // ScrollTrigger: Stagger Reveal for Sections & Cards
+    if (typeof ScrollTrigger !== 'undefined') {
+      // Reveal Project Cards
+      gsap.utils.toArray('.project-card').forEach((card) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+          },
+          opacity: 0,
+          y: 40,
+          scale: 0.96,
+          duration: 0.7,
+          ease: 'power2.out',
+        });
+      });
+
+      // Reveal Timeline Items
+      gsap.utils.toArray('.timeline-item').forEach((item) => {
+        gsap.from(item, {
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+          opacity: 0,
+          x: -30,
+          duration: 0.7,
+          ease: 'power2.out',
+        });
+      });
+
+      // Reveal Skills Cards
+      gsap.utils.toArray('.skill-category-card').forEach((card, idx) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+          opacity: 0,
+          y: 30,
+          duration: 0.6,
+          delay: idx * 0.1,
+          ease: 'power2.out',
+        });
+      });
+
+      // Reveal Credential Cards
+      gsap.utils.toArray('.credential-card').forEach((card, idx) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+          },
+          opacity: 0,
+          y: 30,
+          duration: 0.6,
+          delay: idx * 0.08,
+          ease: 'power2.out',
+        });
+      });
+    }
+  };
+  initGSAP();
+
+  // 5. Interactive Project Category Filtering
+  const initProjectFilters = () => {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    if (!filterButtons.length || !projectCards.length) return;
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        // Update active class & ARIA
+        filterButtons.forEach((b) => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        // Filter cards with smooth fade/scale
+        projectCards.forEach((card) => {
+          const categories = card.getAttribute('data-category') || '';
+          const match = filter === 'all' || categories.includes(filter);
+
+          if (match) {
+            card.style.display = 'flex';
+            requestAnimationFrame(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'scale(1) translateY(0)';
+            });
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'scale(0.96) translateY(10px)';
+            setTimeout(() => {
+              if (card.style.opacity === '0') {
+                card.style.display = 'none';
+              }
+            }, 200);
+          }
+        });
+
+        // Trigger ScrollTrigger refresh if Lenis/GSAP is active
+        if (typeof ScrollTrigger !== 'undefined') {
+          setTimeout(() => ScrollTrigger.refresh(), 220);
+        }
+      });
+    });
+  };
+  initProjectFilters();
+
+  // 6. Navigation Active State Highlighting
+  const initNavHighlighter = () => {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link[data-section]');
+
+    const onScroll = () => {
+      const scrollPos = window.scrollY + 200;
+
+      sections.forEach((section) => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        const id = section.getAttribute('id');
+
+        if (scrollPos >= top && scrollPos < top + height) {
+          navLinks.forEach((link) => {
+            if (link.getAttribute('data-section') === id) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+      });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+  };
+  initNavHighlighter();
+
+  // 7. Clipboard Copy & Toast Feedback
+  const toast = document.getElementById('toast');
+  const toastMessage = document.getElementById('toast-message');
+  let toastTimeout = null;
+
+  const showToast = (message) => {
+    if (!toast) return;
+    toastMessage.textContent = message;
+    toast.classList.add('visible');
+
+    if (toastTimeout) clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+      toast.classList.remove('visible');
+    }, 3200);
+  };
+
+  const copyEmailButtons = document.querySelectorAll('.copy-email-btn');
+  copyEmailButtons.forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const email = btn.getAttribute('data-email') || 'badalsharma2741@gmail.com';
+      try {
+        await navigator.clipboard.writeText(email);
+        showToast(`Email copied: ${email}`);
+      } catch (err) {
+        showToast('Email: badalsharma2741@gmail.com');
+      }
+    });
+  });
+
+  // 8. Mobile Drawer Menu
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+  const drawerClose = document.getElementById('drawer-close');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  if (menuToggle && mobileDrawer) {
+    const openDrawer = () => {
+      mobileDrawer.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeDrawer = () => {
+      mobileDrawer.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    menuToggle.addEventListener('click', openDrawer);
+    if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+
+    mobileDrawer.addEventListener('click', (e) => {
+      if (e.target === mobileDrawer) closeDrawer();
+    });
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', closeDrawer);
+    });
+  }
+
+  // 9. Back to Top Smooth Button
+  const backToTop = document.getElementById('back-to-top');
+  if (backToTop) {
+    backToTop.addEventListener('click', () => {
+      if (lenis) {
+        lenis.scrollTo(0);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  }
+
+  // 10. Live IST (India Standard Time) Clock
+  const istTimeElement = document.getElementById('ist-time');
+  const updateTime = () => {
+    if (!istTimeElement) return;
+    const now = new Date();
+    const options = {
+      timeZone: 'Asia/Kolkata',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true,
+    };
+    istTimeElement.textContent = new Intl.DateTimeFormat('en-US', options).format(now);
+  };
+  updateTime();
+  setInterval(updateTime, 1000);
+
+  // 11. Current Year in Footer
+  const yearElement = document.getElementById('current-year');
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+
+  // 12. Interactive Contact Form Submission
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const subjectInput = document.getElementById('subject');
+      const messageInput = document.getElementById('message');
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const subject = subjectInput.value.trim();
+      const message = messageInput.value.trim();
+
+      if (!name || !email || !subject || !message) {
+        showToast('Please fill out all form fields.');
+        return;
+      }
+
+      // Format mailto link as direct fallback
+      const mailtoUrl = `mailto:badalsharma2741@gmail.com?subject=${encodeURIComponent(
+        `[Portfolio] ${subject}`
+      )}&body=${encodeURIComponent(
+        `Hi Badal,\n\nMy name is ${name} (${email}).\n\n${message}\n\nBest regards,\n${name}`
+      )}`;
+
+      showToast('Opening email client to send message...');
+      setTimeout(() => {
+        window.location.href = mailtoUrl;
+      }, 500);
+
+      contactForm.reset();
+    });
+  }
+
+  // 13. Pure Automatic System Theme Controller (Follows Browser / OS Preference)
+  const colorSchemeMedia = window.matchMedia('(prefers-color-scheme: light)');
+
+  const applyAutomaticTheme = (isLight) => {
+    if (isLight) {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+      document.documentElement.setAttribute('data-theme', 'light');
+    } else {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  };
+
+  // Set initial appearance to match browser/OS
+  applyAutomaticTheme(colorSchemeMedia.matches);
+
+  // Automatically adapt if user toggles OS/browser appearance
+  colorSchemeMedia.addEventListener('change', (e) => {
+    applyAutomaticTheme(e.matches);
+  });
+
+  // 14. Native iOS Bottom Navigation Dock & Scroll Spy
+  const iosTabs = document.querySelectorAll('.ios-tab-item');
+  const desktopNavLinks = document.querySelectorAll('.nav-links .nav-link');
+
+  // Handle Tab Click
+  iosTabs.forEach((tab) => {
+    tab.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = tab.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      if (targetSection) {
+        if (lenis) {
+          lenis.scrollTo(targetSection, { offset: -20, duration: 0.9 });
+        } else {
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+      // Update active state immediately on click
+      iosTabs.forEach((t) => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+
+  // Scroll Spy for iOS bottom nav & desktop nav links
+  const spySections = ['hero', 'projects', 'skills', 'experience', 'contact'];
+  const updateActiveSectionOnScroll = () => {
+    const scrollPosition = window.scrollY + 200;
+    let currentSection = 'hero';
+
+    spySections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) {
+        const top = el.offsetTop;
+        const height = el.offsetHeight;
+        if (scrollPosition >= top && scrollPosition < top + height) {
+          currentSection = id;
+        }
+      }
+    });
+
+    // Update iOS tab items
+    iosTabs.forEach((tab) => {
+      const href = tab.getAttribute('href');
+      if (href === `#${currentSection}`) {
+        tab.classList.add('active');
+      } else {
+        tab.classList.remove('active');
+      }
+    });
+
+    // Update desktop nav links
+    desktopNavLinks.forEach((link) => {
+      const href = link.getAttribute('href');
+      if (href === `#${currentSection}`) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', updateActiveSectionOnScroll, { passive: true });
+});
